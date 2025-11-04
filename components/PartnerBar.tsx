@@ -31,8 +31,23 @@ const PartnerBar = () => {
     speed: 2000,
     autoplaySpeed: 1,
     cssEase: "linear",
-    variableWidth: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 768, // md breakpoint
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480, // sm breakpoint
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
 
   return (
@@ -41,11 +56,10 @@ const PartnerBar = () => {
         <h2 className="text-xl font-semibold text-gray-700 mb-6">Rates and coverage from over 50 top insurance providers.</h2>
         <Slider {...settings}>
           {logos.map((logo, index) => (
-            <div key={index} style={{ width: 150 }} className="mx-4">
+            <div key={index} className="mx-4 flex justify-center items-center">
               <img src={logo.src} alt={logo.alt} style={{ height: '40px', width: 'auto' }} />
             </div>
-          ))}
-        </Slider>
+          ))}        </Slider>
       </div>
     </div>
   );
