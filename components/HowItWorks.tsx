@@ -7,7 +7,7 @@ const HowItWorks = () => {
     <div className="bg-white py-20">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold text-gray-800">Switch and save on your insurance today</h2>
-        <div className="flex justify-center space-x-16 mt-12">
+        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-16 space-y-8 md:space-y-0 mt-12">
           <div className="text-center">
             <div className="bg-blue-100 rounded-full w-24 h-24 mx-auto flex items-center justify-center text-blue-600 text-4xl">
               <FaFileAlt />
