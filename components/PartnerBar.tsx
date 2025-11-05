@@ -1,4 +1,6 @@
 
+'use client';
+
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
@@ -24,41 +26,46 @@ const PartnerBar = () => {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    speed: 2000,
+    speed: 4000,
     autoplaySpeed: 1,
     cssEase: "linear",
     arrows: false,
     responsive: [
       {
-        breakpoint: 768, // md breakpoint
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 4,
         }
       },
       {
-        breakpoint: 480, // sm breakpoint
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
         }
       }
     ]
   };
 
   return (
-    <div className="bg-white py-8">
+    <div className="bg-gray-50 py-16">
       <div className="container mx-auto text-center">
-        <h2 className="text-xl font-semibold text-gray-700 mb-6">Rates and coverage from over 50 top insurance providers.</h2>
+        <h2 className="text-2xl font-semibold text-gray-700 mb-10">We partner with Canada's top insurance companies</h2>
         <Slider {...settings}>
           {logos.map((logo, index) => (
             <div key={index} className="mx-4 flex justify-center items-center">
-              <Image src={logo.src} alt={logo.alt} width={100} height={40} style={{ objectFit: 'contain' }} />
+              <Image src={logo.src} alt={logo.alt} width={120} height={50} className="grayscale hover:grayscale-0 transition duration-300" style={{ objectFit: 'contain' }} />
             </div>
-          ))}        </Slider>
+          ))}
+        </Slider>
       </div>
     </div>
   );

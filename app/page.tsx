@@ -1,4 +1,8 @@
 
+'use client';
+
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import PartnerBar from '../components/PartnerBar';
@@ -12,25 +16,38 @@ import FeaturedProducts from '../components/FeaturedProducts';
 import BundlingCTA from '../components/BundlingCTA';
 import BlogPreview from '../components/BlogPreview';
 import Footer from '../components/Footer';
+import Modal from '../components/Modal';
+import QuoteForm from '../components/QuoteForm';
+
+const PartnerBarWithNoSSR = dynamic(() => import('../components/PartnerBar'), { ssr: false });
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <>
-      <Header />
+      <Header onGetQuoteClick={toggleModal} />
       <main>
-        <Hero />
-        <PartnerBar />
-        <ValueProp />
+        <Hero onGetQuoteClick={toggleModal} />
+        <PartnerBarWithNoSSR />
+        <ValueProp onGetQuoteClick={toggleModal} />
         <Reviews />
         <ServiceGrid />
-        <HowItWorks />
+        <HowItWorks onGetStartedClick={toggleModal} />
         <WhyChooseUs />
         <FAQ />
         <FeaturedProducts />
-        <BundlingCTA />
+        <BundlingCTA onGetStartedClick={toggleModal} />
         <BlogPreview />
       </main>
       <Footer />
+      <Modal isOpen={isModalOpen} onClose={toggleModal}>
+        <QuoteForm />
+      </Modal>
     </>
   );
 }
