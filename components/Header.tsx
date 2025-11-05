@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const Header = ({ onGetQuoteClick }: { onGetQuoteClick: () => void }) => {
+const Header = ({ onGetQuoteClick }: { onGetQuoteClick?: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

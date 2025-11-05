@@ -14,8 +14,8 @@ const ValueProp = ({ onGetQuoteClick }: { onGetQuoteClick: () => void }) => {
             alt="Family enjoying their home"
             width={880}
             height={590}
-            layout="responsive"
             className="rounded-lg shadow-lg"
+            style={{ objectFit: 'cover' }}
           />
         </div>
         <div className="w-full md:w-1/2 text-center md:text-left">
